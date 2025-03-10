@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{page_layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>RENTAL FORM</title>
+    <link rel="stylesheet" href="/css/request.css">
+</head>
+<body>
+<div layout:fragment="main-content">
+<form th:action="@{/rent/submit(estateId=${estate.id})}" method="post">
+    <input type="hidden" th:value="${estate.id}" name="estateId">
+
+    <h3 th:text="'Rental form for ' + ${estate.cityName} + ',' + ${estate.streetName} + ' ' + ${estate.streetNumber} "></h3>
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="identity">Identity number</label>
+        <input type="text" id="identity" name="identity" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="afm">Taxpayer ID number</label>
+        <input type="text" id="afm" name="afm" class="form-control" required>
+    </div>
+
+
+    APPOINTMENT FOR HOUSETOUR
+
+    <div class="form-group">
+        <label for="appointmentDate">Preferred Date and Time</label>
+        <input type="datetime-local" id="appointmentDate" name="appointmentDate" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="message">Message (Optional)</label>
+        <textarea id="message" name="message" class="form-control" rows="4"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+
+</body>
+</html>

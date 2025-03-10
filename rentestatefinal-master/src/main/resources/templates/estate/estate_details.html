@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{page_layout/layout}">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estate Details</title>
+  <link rel="stylesheet" href="/css/estate_details.css">
+</head>
+<body>
+<div layout:fragment="main-content">
+  <h2 class="title">Estate Details</h2>
+
+  <div class="table-container">
+    <table class="table">
+      <tr>
+        <th>City</th>
+        <td th:text="${estate.cityName}"></td>
+      </tr>
+      <tr>
+        <th>Area</th>
+        <td th:text="${estate.areaName}"></td>
+      </tr>
+      <tr>
+        <th>Street</th>
+        <td th:text="${estate.streetName + ' ' + estate.streetNumber}"></td>
+      </tr>
+      <tr>
+        <th>Price</th>
+        <td th:text="${estate.price} + ' €'"></td>
+      </tr>
+      <tr>
+        <th>Bedrooms</th>
+        <td th:text="${estate.bedrooms}"></td>
+      </tr>
+      <tr>
+        <th>Bathrooms</th>
+        <td th:text="${estate.bathrooms}"></td>
+      </tr>
+      <tr>
+        <th>Square Meters</th>
+        <td th:text="${estate.sqM}"></td>
+      </tr>
+      <tr>
+        <th>Floor</th>
+        <td th:text="${estate.floor}"></td>
+      </tr>
+      <tr>
+        <th>Year Built</th>
+        <td th:text="${estate.yearBuilt}"></td>
+      </tr>
+      <tr>
+        <th>Renovation Year</th>
+        <td th:text="${estate.renovationYear}"></td>
+      </tr>
+      <tr>
+        <th>Owner</th>
+        <td th:text="${estate.ownerName}"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="button-container">
+    <a th:href="@{/rent/form(estateId=${estate.id})}" class="btn btn-primary">RENT</a>
+    <a href="/estate/estates" class="btn btn-secondary">Back</a>
+  </div>
+</div>
+</body>
+</html>

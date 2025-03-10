@@ -1,0 +1,90 @@
+.estate-form {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+
+.form-group label {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    border-radius: 8px;
+    padding: 10px;
+    border: 2px solid #ddd;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #1e90ff;
+    box-shadow: 0 0 8px rgba(30, 144, 255, 0.5);
+}
+
+.welcome-msg {
+    font-size: 1.2em;
+    color: #007bff;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+
+.text-danger {
+    color: #e74c3c;
+    font-size: 0.9em;
+}
+
+
+.btn-primary {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    padding: 14px 30px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.mt-3 {
+    margin-top: 30px;
+}
+
+
+
+
+.owner-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #3498db;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+    background-color: #f0f8ff;
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);/
+    transition: all 0.3s ease;
+}
+
+.owner-name:hover {
+    background-color: #e6f7ff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}

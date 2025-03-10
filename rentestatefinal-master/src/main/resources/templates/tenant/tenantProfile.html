@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{page_layout/layout}">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Tenants</title>
+</head>
+<body>
+<div layout:fragment="main-content">
+  <div th:if="${ tenant}">
+
+    <div class="card" style="width:400px">
+      <img class="card-img-top" th:src="@{/images/img_avatar1.png}" alt="Card image">
+      <div class="card-body">
+        <h4 class="card-title" th:text="${tenant.firstName + ' ' + tenant.lastName}"></h4>
+        <p class="card-text" th:text="'Tenant ID is ' + ${tenant.id}"></p>
+        <div class="card-text" th:if="${tenant.tenantProfile}">
+          <p th:if="${tenant.tenantProfile.city}" th:text="'Tenant City is ' + ${tenant.tenantProfile.city}"></p>
+          <p th:if="${tenant.tenantProfile.street}" th:text="'Tenant Street is ' + ${tenant.tenantProfile.street}"></p>
+          <p th:if="${tenant.tenantProfile.streetNumber}" th:text="'Tenant Number is ' + ${tenant.tenantProfile.streetNumber}"></p>
+        </div>
+        <a href="#" class="btn btn-primary">See Profile</a>
+      </div>
+    </div>
+
+  </div>
+  <div th:if="${tenant == null}">
+    No Tenants found!
+  </div>
+</div>
+</body>
+</html>

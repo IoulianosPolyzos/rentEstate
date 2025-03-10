@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{page_layout/layout}"
+      xmlns:sec="http://www.thymeleaf.org/extras/springsecurity">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<div layout:fragment="main-content">
+    <div th:if="${ not #lists.isEmpty(users)}">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.getStatus()}"></td>
+                <td th:if="${user.id}">
+
+                    <a th:if="${user.isVerified == false}"
+                       class="btn btn-primary"
+                       th:href="@{/admin/user/verify/{id}(id=${user.id})}">
+                        Verify
+                    </a>
+                    <form th:action="@{'/admin/users/' + ${user.id} + '/delete'}" method="post" style="display:inline;">
+                        <button type="submit" sec:authorize="hasRole('ADMIN')" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:if="${ #lists.isEmpty(users)}">
+        No Users found!
+    </div>
+
+
+
+
+
+
+    </div>
+</body>
+</html>
