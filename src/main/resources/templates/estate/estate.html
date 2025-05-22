@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{page_layout/layout}"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Estate</title>
+  <link rel="stylesheet" href="/css/addEstate.css">
+
+</head>
+<body>
+<div layout:fragment="main-content">
+
+
+  <form action="#" th:action="@{/estate/new}" th:object="${estate}" method="post" class="estate-form">
+    <div sec:authorize="isAuthenticated()" class="float-right">
+      <span class="owner-name">Owner: <span sec:authentication="principal.username"></span></span>
+    </div>
+
+
+
+    <div class="form-group">
+      <label for="floor">Floor</label>
+      <input type="number" id="floor" class="form-control" th:field="*{floor}">
+      <span th:if="${#fields.hasErrors('floor')}" th:errors="*{floor}" th:errorclass="error"></span>
+    </div>
+
+
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" id="price" class="form-control" th:field="*{price}">
+      <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" th:errorclass="error"></span>
+    </div>
+
+
+    <div class="form-group">
+      <label for="cityName">City Name</label>
+      <input type="text" id="cityName" class="form-control" th:field="*{cityName}">
+      <span th:if="${#fields.hasErrors('cityName')}" th:errors="*{cityName}" th:errorclass="error"></span>
+    </div>
+
+
+    <div class="form-group">
+      <label for="areaName">Area Name</label>
+      <input type="text" id="areaName" class="form-control" th:field="*{areaName}">
+      <span th:if="${#fields.hasErrors('areaName')}" th:errors="*{areaName}" th:errorclass="error"></span>
+    </div>
+
+
+    <div class="form-group">
+      <label for="yearBuilt">Year Built</label>
+      <input type="number" id="yearBuilt" class="form-control"
+             th:field="*{yearBuilt}" min="1900" max="2025">
+      <span th:if="${#fields.hasErrors('yearBuilt')}" th:errors="*{yearBuilt}" th:errorclass="error"></span>
+    </div>
+
+
+    <div class="form-group">
+      <label for="bedrooms">Bedrooms</label>
+      <input type="number" id="bedrooms" class="form-control" th:field="*{bedrooms}">
+      <span th:if="${#fields.hasErrors('bedrooms')}" th:errors="*{bedrooms}" th:errorclass="error"></span>
+    </div>
+
+
+    <div class="form-group">
+      <label for="bathrooms">Bathrooms</label>
+      <input type="number" id="bathrooms" class="form-control" th:field="*{bathrooms}">
+      <span th:if="${#fields.hasErrors('bathrooms')}" th:errors="*{bathrooms}" th:errorclass="error"></span>
+    </div>
+
+
+    <div class="form-group">
+      <label for="sqM">Square Meters</label>
+      <input type="number" id="sqM" class="form-control" th:field="*{sqM}">
+      <span th:if="${#fields.hasErrors('sqM')}" th:errors="*{sqM}" th:errorclass="error"></span>
+    </div>
+
+
+    <div class="form-group">
+      <label for="streetName">Street Name</label>
+      <input type="text" id="streetName" class="form-control" th:field="*{streetName}">
+      <span th:if="${#fields.hasErrors('streetName')}" th:errors="*{streetName}" th:errorclass="error"></span>
+    </div>
+
+
+    <div class="form-group">
+      <label for="streetNumber">Street Number</label>
+      <input type="number" id="streetNumber" class="form-control" th:field="*{streetNumber}">
+      <span th:if="${#fields.hasErrors('streetNumber')}" th:errors="*{streetNumber}" th:errorclass="error"></span>
+    </div>
+
+
+    <div class="form-group">
+      <label for="renovationYear">Renovation Year</label>
+      <input type="number" id="renovationYear" class="form-control"
+             th:field="*{renovationYear}" min="1900" max="2025">
+      <span th:if="${#fields.hasErrors('renovationYear')}" th:errors="*{renovationYear}" th:errorclass="error"></span>
+    </div>
+
+
+    <div th:if="${error != null}">
+      <div class="alert alert-danger">
+        <p th:text="${error}"></p>
+      </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+  </form>
+
+</div>
+</body>
+</html>

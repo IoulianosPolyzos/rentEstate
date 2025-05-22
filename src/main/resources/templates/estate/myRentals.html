@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{page_layout/layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>My Rental Requests</title>
+  <link rel="stylesheet" href="/css/noEstatesFound.css">
+</head>
+<body>
+<div layout:fragment="main-content">
+
+  <h1>My Rental Requests</h1>
+
+
+  <div th:if="${not #lists.isEmpty(rentRequests)}">
+    <table class="table table-striped table-hover align-middle">
+      <thead class="table-dark text-center">
+      <tr>
+        <th>Estate Address</th>
+        <th>City</th>
+        <th>Owner</th>
+        <th>Approval Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="rent : ${rentRequests}">
+        <!-- Estate Address -->
+        <td th:text="${rent.estate.streetName + ' ' + rent.estate.streetNumber}" class="text-center"></td>
+
+        <!-- City -->
+        <td th:text="${rent.estate.cityName}" class="text-center"></td>
+
+        <!-- Owner -->
+        <td th:text="${rent.estate.ownerName}" class="text-center"></td>
+
+        <!-- Approval Status -->
+        <td th:text="${rent.status}" class="text-center"></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+
+  <div th:if="${#lists.isEmpty(rentRequests)}" class="empty-message">
+    <p>No rental requests found. Start exploring properties and send your first request!</p>
+  </div>
+
+
+
+</div>
+</body>
+</html>

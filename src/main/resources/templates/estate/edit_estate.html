@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{page_layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Estate</title>
+    <link rel="stylesheet" href="/css/your_profile.css">
+</head>
+<body>
+<div layout:fragment="main-content">
+    <h2>Edit Estate</h2>
+    <form th:action="@{'/estate/' + ${estate.id} + '/update'}" method="POST">
+        <input type="hidden" th:value="${estate.id}" name="id"/>
+
+        <div>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" th:value="${estate.price}" required/>
+        </div>
+        <div>
+            <label for="bedrooms">Bedrooms:</label>
+            <input type="number" id="bedrooms" name="bedrooms" th:value="${estate.bedrooms}" required/>
+        </div>
+        <div>
+            <label for="bathrooms">Bathrooms:</label>
+            <input type="number" id="bathrooms" name="bathrooms" th:value="${estate.bathrooms}" required/>
+        </div>
+        <div>
+            <label for="renovationYear">Renovation Year:</label>
+            <input type="number" id="renovationYear" name="renovationYear" th:value="${estate.renovationYear}" required/>
+        </div>
+        <button type="submit">Save Changes</button>
+        <a th:href="@{/estate/my-estates}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+</body>
+</html>

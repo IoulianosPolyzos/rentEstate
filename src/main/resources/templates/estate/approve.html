@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approve Estates</title>
+</head>
+<body>
+<h1>Manage Estates</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Approved</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="estate : ${estates}">
+        <td th:text="${estate.id}"></td>
+        <td th:text="${estate.streetName} + ' ' + ${estate.streetNumber}"></td>
+        <td th:text="${estate.cityName}"></td>
+        <td th:text="${estate.isApproved ? 'Approved' : 'Not Approved'}"></td>
+        <td>
+
+            <a th:href="@{/admin/estates/toggle-approval/{id}(id=${estate.id})}">
+                <button th:text="${estate.isApproved ? 'Unapprove' : 'Approve'}"></button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/admin">Back to Dashboard</a>
+</body>
+</html>

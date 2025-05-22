@@ -1,0 +1,174 @@
+.container {
+  max-width: 960px;
+}
+
+.icon-link > .bi {
+  width: .75em;
+  height: .75em;
+}
+
+
+
+.site-header {
+  background-color: rgba(0, 0, 0, .85);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+.site-header a {
+  color: #8e8e8e;
+  transition: color .15s ease-in-out;
+}
+.site-header a:hover {
+  color: #000000;
+  text-decoration: none;
+}
+
+
+
+.product-device {
+  position: absolute;
+  right: 10%;
+  bottom: -30%;
+  width: 300px;
+  height: 540px;
+  background-color:  rgba(255, 255, 255, .1);;
+  border-radius: 21px;
+  transform: rotate(30deg);
+}
+
+.product-device::before {
+  position: absolute;
+  top: 10%;
+  right: 10px;
+  bottom: 10%;
+  left: 10px;
+  content: "";
+  background-color: rgba(255, 255, 255, .1);
+  border-radius: 5px;
+}
+
+.product-device-2 {
+  top: -25%;
+  right: auto;
+  bottom: 0;
+  left: 5%;
+  background-color:  rgba(255, 255, 255, .1);;
+}
+
+
+body {
+  background-color: #ffffff;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+}
+
+a {
+  color: #1e90ff;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
+}
+
+a:hover {
+  color: #87ceeb;
+}
+
+.site-header {
+  background-color: #ffffff;
+}
+
+.site-header a {
+  color: #d3d3d3;
+}
+
+.site-header a:hover {
+  color: #ffffff;
+}
+
+.product-device, .product-device-2 {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+input, textarea, button {
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid #555555;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+input:focus, textarea:focus, button:hover {
+  border-color: #1e90ff;
+}
+
+.flex-equal > * {
+  flex: 1;
+}
+
+
+
+.nav-masthead {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-link, .btn {
+  color: white;
+  text-decoration: none;
+  margin-right: 0;
+}
+
+.nav-link:hover, .btn:hover {
+  color: #1e90ff;
+}
+
+.nav-link > a, .nav-link > button {
+  margin-right: 0;
+}
+
+.nav-link:last-child, .nav-link button:last-child, .btn:last-child {
+  margin-right: 0;
+}
+
+.nav-link .btn, .btn-primary, .btn-success, .btn-danger, .btn-info {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link .btn:hover, .btn-primary:hover, .btn-success:hover, .btn-danger:hover, .btn-info:hover {
+  box-shadow: 0 0 20px 5px rgba(30, 144, 255, 0.8);
+  transform: scale(1.05);
+}
+
+.nav-link .btn:focus, .btn-primary:focus, .btn-success:focus, .btn-danger:focus, .btn-info:focus {
+  box-shadow: 0 0 20px 5px rgba(30, 144, 255, 0.8);
+  outline: none;
+}
+
+.logged-as {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #1e90ff;
+  text-shadow: 2px 2px 8px rgba(30, 144, 255, 0.6);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.logged-as:hover {
+  color: #ff6347;
+  transform: scale(1.1);
+}
+
+.logged-as span {
+  font-style: italic;
+  color: #47ff4a;
+  font-weight: normal;
+}
+
+
+

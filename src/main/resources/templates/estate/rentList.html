@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{page_layout/layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rentals</title>
+</head>
+<body>
+<div layout:fragment="main-content">
+    <h2>Rentals List</h2>
+
+    <div th:if="${#lists.isEmpty(rent)}" class="alert alert-warning text-center" role="alert">
+        <strong>No rentals found for this estate.</strong>
+    </div>
+
+
+    <table th:if="${!#lists.isEmpty(rent)}" class="table table-striped table-hover align-middle">
+        <thead class="table-dark text-center">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Appointment Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="rent : ${rent}">
+            <td th:text="${rent.name}" class="text-center"></td>
+            <td th:text="${rent.email}" class="text-center"></td>
+            <td th:text="${rent.phone}" class="text-center"></td>
+            <td th:text="${rent.appointmentDate}" class="text-center"></td>
+            <td th:text="${rent.status}" class="text-center"></td>
+            <td class="text-center">
+                <div class="d-flex justify-content-center gap-2">
+                    <!-- Approve Button -->
+                    <form th:action="@{/rent/approve}" method="post" style="display: inline;">
+                        <input type="hidden" name="rentId" th:value="${rent.id}" />
+                        <input type="hidden" name="ownerId" th:value="${ownerId}" />
+                        <input type="hidden" name="estateId" th:value="${estateId}" />
+                        <button type="submit" class="btn btn-success btn-sm"
+                                th:disabled="${rent.status == 'APPROVED'}">
+                            Approve
+                        </button>
+                    </form>
+
+                    <!-- Reject Button -->
+                    <form th:action="@{/rent/reject}" method="post" style="display: inline;">
+                        <input type="hidden" name="rentId" th:value="${rent.id}" />
+                        <input type="hidden" name="ownerId" th:value="${ownerId}" />
+                        <input type="hidden" name="estateId" th:value="${estateId}" />
+                        <button type="submit" class="btn btn-danger btn-sm"
+                                th:disabled="${rent.status == 'REJECTED'}">
+                            Reject
+                        </button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

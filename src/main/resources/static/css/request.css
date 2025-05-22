@@ -1,0 +1,91 @@
+body {
+    background: url('https://static.vecteezy.com/system/resources/thumbnails/023/469/854/small_2x/single-continuous-line-drawing-close-up-key-on-door-personal-loan-concept-keys-in-door-lock-mortgage-credit-or-property-concept-sale-and-rent-of-apartments-one-line-draw-graphic-design-vector.jpg') no-repeat center center fixed;
+    /*background: linear-gradient(135deg, #6a11cb, #2575fc);*/
+    background-size: 50%;
+    background-position: 70% center;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    width: 100%;
+    background-color: #343a40;
+}
+
+.nav-masthead {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav-link, .btn {
+    color: white;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.nav-link:hover, .btn:hover {
+    color: #1e90ff;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+form {
+    background-color: #94ef0c;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(248, 112, 0, 0.3);
+    width: 100%;
+    max-width: 500px;
+    min-width: 300px;
+    margin: 0 auto;
+}
+
+form button {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: #1e90ff;
+}
+
+h3 {
+    color: #ffffff;
+    text-align: center;
+}
+
+input, textarea, button {
+    background-color: #444444;
+    color: #ffffff;
+    border: 1px solid #555555;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+input:focus, textarea:focus, button:hover {
+    border-color: #1e90ff;
+}
+
+button {
+    background-color: #1e90ff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #87ceeb;
+}

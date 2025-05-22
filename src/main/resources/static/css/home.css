@@ -1,0 +1,17 @@
+body {
+    background: url('https://img.freepik.com/premium-vector/suburban-neighborhood-houses-landscape-vector-illustration-small-town-decoration_37925-5707.jpg') no-repeat center center fixed; /* Εικόνα φόντου */
+    background-size: cover;
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20%;
+    font-size: 3em;
+    color: #ff6347;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}

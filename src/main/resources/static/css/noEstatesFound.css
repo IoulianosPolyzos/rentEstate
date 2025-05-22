@@ -1,0 +1,9 @@
+.empty-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    text-align: center;
+    font-size: 1.5em;
+    color: #666;
+}

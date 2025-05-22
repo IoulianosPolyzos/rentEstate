@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<header class="masthead mb-auto" th:fragment="header">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/product/">
+
+    <!-- Bootstrap CSS -->
+    <link href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../static/css/product.css" th:href="@{/css/product.css}" rel="stylesheet">
+    <div class="inner">
+        <!-- Branding Section -->
+        <h3 class="masthead-brand text-center">Rent Estate</h3>
+
+        <!-- Navigation Section -->
+        <nav class="nav nav-masthead justify-content-center">
+            <!-- Public Buttons -->
+            <a class="btn btn-primary me-2" href="/" data-path="/">Home</a>
+            <a class="btn btn-primary me-2" href="/estate/estates" data-path="/estate">Estates</a>
+
+            <!-- Admin-Specific Button -->
+            <a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary me-2" href="/users">Users</a>
+
+            <!-- Add Estate Button -->
+            <a class="btn btn-success me-2" href="/estate/new">Add Estate</a>
+
+            <!-- Authentication Buttons -->
+            <!-- For Unauthenticated Users -->
+            <div sec:authorize="!isAuthenticated()" class="d-flex gap-2">
+                <a class="btn btn-outline-secondary" href="/login">Login</a>
+                <a class="btn btn-outline-secondary" href="/register">Register</a>
+            </div>
+
+            <!-- For Authenticated Users -->
+            <div sec:authorize="isAuthenticated()" class="d-flex gap-2">
+                <a href="/estate/my-estates" class="btn btn-primary">My Estates</a>
+                <a href="/rent/my-rentals" class="btn btn-primary">My Rental Requests</a>
+                <a href="/user" class="btn btn-info">Your Profile</a>
+                <a href="/logout" class="btn btn-danger sign-out-btn">Sign Out</a>
+
+                <!-- Logout Button -->
+
+
+            </div>
+        </nav>
+
+        <!-- User Information Section -->
+        <div sec:authorize="isAuthenticated()" class="text-end mt-3 logged-as">
+            <span>Logged in as <strong sec:authentication="principal.username"></strong></span>
+        </div>
+    </div>
+
+</header>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/springsecurity"
+      layout:decorate="~{page_layout/layout}">
+
+<head>
+    <meta charset="UTF-8">
+  <title>Estates</title>
+  <link rel="stylesheet" href="/css/search.css">
+  <link rel="stylesheet" href="/css/estates.css">
+
+</head>
+<body>
+<div layout:fragment="main-content">
+  <div th:if="${errorMessage}" class="alert alert-danger">
+    <p th:text="${errorMessage}"></p>
+  </div>
+  <div class="row">
+    <div class="col-md-3 search-form-container">
+      <h1 class="title-style">Search Estates</h1>
+      <form th:action="@{/estate/search}" method="get">
+        <div class="form-group">
+          <label for="cityName">City</label>
+          <input type="text" class="form-control" id="cityName" name="cityName" placeholder="Enter city">
+        </div>
+        <div class="form-group">
+          <label for="areaName">Area</label>
+          <input type="text" class="form-control" id="areaName" name="areaName" placeholder="Enter area">
+        </div>
+
+        <div class="form-group">
+          <label for="minPrice">Price From</label>
+          <input type="number" class="form-control" id="minPrice" name="minPrice" placeholder="Enter min price" min="0">
+        </div>
+        <div class="form-group">
+          <label for="maxPrice">Price To</label>
+          <input type="number" class="form-control" id="maxPrice" name="maxPrice" placeholder="Enter max price" min="0">
+        </div>
+
+        <div class="form-group">
+          <label for="bedrooms">Bedrooms</label>
+          <input type="number" class="form-control" id="bedrooms" name="bedrooms" placeholder="Enter number of bedrooms" min="0">
+        </div>
+        <div class="form-group">
+          <label for="bathrooms">Bathrooms</label>
+          <input type="number" class="form-control" id="bathrooms" name="bathrooms" placeholder="Enter number of bathrooms" min="0">
+        </div>
+        <div class="form-group">
+          <label for="MinSqM">Square Meters From</label>
+          <input type="number" class="form-control" id="MinSqM" name="MinSqM" placeholder="Enter Minimum square Meters " min="0">
+        </div>
+        <div class="form-group">
+          <label for="MaxSqM">Square Meters To</label>
+          <input type="number" class="form-control" id="MaxSqM" name="MaxSqM" placeholder="Enter Maximum square Meters" min="0">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+    </div>
+
+
+    <div class="col-md-9">
+      <div th:if="${not #lists.isEmpty(estates)}">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>City</th>
+            <th>Area</th>
+            <th>Street</th>
+            <th>Price</th>
+            <th>Square Meters</th>
+            <th>Bedrooms</th>
+            <th>Bathrooms</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="estate : ${estates}" class="estate-row">
+            <td th:text="${estate.cityName}"></td>
+            <td th:text="${estate.areaName}"></td>
+            <td th:text="${estate.streetName + ' ' + estate.streetNumber}"></td>
+            <td th:text="${estate.price} + ' €'"></td>
+            <td th:text="${estate.sqM}"></td>
+            <td th:text="${estate.bedrooms}"></td>
+            <td th:text="${estate.bathrooms}"></td>
+            <td>
+              <span th:text="${estate.getStatus}" class="estate-status" th:classappend="${estate.status == 'Pending' ? ' pending' : estate.status == 'Rejected' ? ' rejected' : ' approved'}"></span>
+            </td>
+            <td class="estate-actions">
+              <a th:href="@{'/estate/' + ${estate.id} + '/details'}" class="btn btn-primary">Details</a>
+              <a class="btn btn-outline-success btn-sm" sec:authorize="hasRole('OWNER')" th:href="@{'/estate/edit/' + ${estate.id}}">Edit</a>
+              <form th:action="@{'/admin/estates/' + ${estate.id} + '/delete'}" method="post" style="display:inline;">
+                <button type="submit" sec:authorize="hasRole('ADMIN')" class="btn btn-outline-danger btn-sm">Delete</button>
+              </form>
+              <a th:if="${estate.isApproved == false}" sec:authorize="hasRole('ADMIN')" class="btn btn-primary" th:href="@{/admin/estate/approve/{id}(id=${estate.id})}">Approve</a>
+            </td>
+
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div th:if="${#lists.isEmpty(estates)}">
+        No Estates found!
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
