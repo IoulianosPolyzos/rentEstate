@@ -24,8 +24,8 @@ COPY --from=builder /build/target/rentEstate-0.0.1-SNAPSHOT.jar ./application.ja
 RUN chown appuser /app/application.jar
 
 USER appuser
-# Expose port 8080 for the application
-EXPOSE 8080
+# Expose port 8081 for the application
+EXPOSE 8081
 
 # Define the default command to run the application
 ENTRYPOINT ["java", "-jar", "application.jar"]
