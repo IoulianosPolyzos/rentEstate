@@ -41,7 +41,7 @@ pipeline {
             steps {
                 sh '''
                     export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
-                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l dbservers ~/workspace/ansible/playbooks/postgres.yaml
+                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l dbservers ~/workspace/ansible/playbook/postgres.yaml
                 '''
             }
         }
@@ -53,7 +53,7 @@ pipeline {
             steps {
                 sh '''
                     export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
-                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l appservers ~/workspace/ansible/playbooks/spring.yaml
+                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l appservers ~/workspace/ansible/playbook/spring.yaml
                 '''
             }
         }
