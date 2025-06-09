@@ -9,11 +9,11 @@ pipeline {
 
     stages {
 
-        stage('run ansible pipeline') {
-            steps {
-                build job: 'ansible-job'
-            }
-        }
+//         stage('run ansible pipeline') {
+//             steps {
+//                 build job: 'ansible-job'
+//             }
+//         }
 
         stage('test connection to deploy env') {
         steps {

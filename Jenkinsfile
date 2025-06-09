@@ -13,11 +13,11 @@ environment {
 stages {
 
 
-//     stage('run ansible pipeline') {
-//         steps {
-//             build job: 'ansible'
-//         }
-//     }
+    stage('run ansible pipeline') {
+        steps {
+            build job: 'ansible'
+        }
+    }
 
     stage('Test') {
         steps {
