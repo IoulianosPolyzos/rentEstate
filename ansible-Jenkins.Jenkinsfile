@@ -11,14 +11,14 @@ pipeline {
 
         stage('run ansible pipeline') {
             steps {
-                build job: 'ansible'
+                build job: 'ansible-job'
             }
         }
 
         stage('test connection to deploy env') {
         steps {
             sh '''
-                ansible -i ~/workspace/ansible/hosts.yaml -m ping appserver-vm,dbserver-vm
+                ansible -i ~/workspace/ansible/hosts.yaml -m ping appservers,dbservers
             '''
             }
         }
@@ -30,7 +30,7 @@ pipeline {
             steps {
                 sh '''
                     export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
-                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l dbserver-vm ~/workspace/ansible/playbooks/postgres-16.yaml
+                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l dbservers ~/workspace/ansible/playbooks/postgres-16.yaml
                 '''
             }
         }
@@ -42,7 +42,7 @@ pipeline {
             steps {
                 sh '''
                     export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
-                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l appserver-vm ~/workspace/ansible/playbooks/spring.yaml
+                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l appservers ~/workspace/ansible/playbooks/spring.yaml
                 '''
             }
         }
