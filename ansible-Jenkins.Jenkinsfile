@@ -1,4 +1,5 @@
 pipeline {
+
     agent any
 
     parameters {
@@ -7,41 +8,54 @@ pipeline {
     }
 
     environment {
-        PATH = "/usr/bin:/usr/local/bin:${env.PATH}"
-    }
+            PATH = "/usr/bin:/usr/local/bin:${env.PATH}"
+        }
 
     stages {
 
+//         stage('run ansible pipeline') {
+//             steps {
+//                 build job: 'ansible-job'
+//             }
+//         }
+
+        stage('Checkout Ansible repo') {
+                    steps {
+                        checkout([$class: 'GitSCM', branches: [[name: 'main']],
+                            userRemoteConfigs: [[url: 'https://github.com/IoulianosPolyzos/ansible.git']]])
+                    }
+                }
+
         stage('test connection to deploy env') {
-            steps {
-                sh '''
-                    ansible -i $WORKSPACE/hosts.yaml -m ping appservers,dbservers
-                '''
+        steps {
+            sh '''
+                ansible -i ~/workspace/ansible/hosts.yaml -m ping appservers,dbservers
+            '''
             }
         }
 
         stage('Install postgres') {
-            when {
+             when {
                 expression { return params.INSTALL_POSTGRES }
             }
             steps {
                 sh '''
-                    export ANSIBLE_CONFIG=$WORKSPACE/ansible.cfg
-                    ansible-playbook -i $WORKSPACE/hosts.yaml -l dbservers $WORKSPACE/playbooks/postgres-16.yaml
+                    export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
+                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l dbservers ~/workspace/ansible/playbooks/postgres-16.yaml
                 '''
             }
         }
 
         stage('install springboot') {
-            when {
+             when {
                 expression { return params.INSTALL_SPRING }
             }
             steps {
                 sh '''
-                    export ANSIBLE_CONFIG=$WORKSPACE/ansible.cfg
-                    ansible-playbook -i $WORKSPACE/hosts.yaml -l appservers $WORKSPACE/playbooks/spring.yaml
+                    export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
+                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l appservers ~/workspace/ansible/playbooks/spring.yaml
                 '''
             }
         }
-    }
+}
 }
