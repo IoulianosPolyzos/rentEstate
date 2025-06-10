@@ -9,7 +9,7 @@ COPY pom.xml .
 COPY src ./src
 
 # Build the application and skip the tests to speed up the process
-RUN mvn clean package -DskipTests 
+RUN mvn clean package 
 
 
 # Stage 2: Create the final lightweight image to run the application
