@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: db-pvc
+  labels:
+    pvc: db
+spec:
+  storageClassName: microk8s-hostpath
+  resources:
+    requests:
+      storage: 100Mi
+  accessModes:
+    - ReadWriteOnce
+
