@@ -2,9 +2,9 @@ services:
   db:
     image: postgres:16
     expose:
-      - 5432
+      - 5433
     ports:
-      - "5432:5432"
+      - "5432:5433"
     environment:
       - POSTGRES_USER=myuser
       - POSTGRES_PASSWORD=pass12345
@@ -30,7 +30,7 @@ services:
       db:
         condition: service_healthy
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/mydb
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/mydb
       - SPRING_DATASOURCE_USERNAME=myuser
       - SPRING_DATASOURCE_PASSWORD=pass12345
     healthcheck:
