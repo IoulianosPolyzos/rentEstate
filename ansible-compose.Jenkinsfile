@@ -10,6 +10,15 @@ pipeline {
             }
         }
 
+	stage('Checkout Ansible repo') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: 'main']],
+                   userRemoteConfigs: [[url: 'https://github.com/IoulianosPolyzos/ansible.git']]])
+            }
+        }
+
+
+
         stage('test connection to deploy env') {
         steps {
             sh '''
