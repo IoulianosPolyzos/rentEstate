@@ -17,7 +17,7 @@ RUN apk update && apk add curl
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
 # Copy the built jar from the builder stage
-COPY --from=builder /build/target/rentEstate-2024-0.0.1-SNAPSHOT.jar ./application.jar
+COPY --from=builder /build/target/rentEstate-0.0.1-SNAPSHOT.jar ./application.jar
 
 # Set ownership to the appuser
 RUN chown appuser /app/application.jar
