@@ -9,7 +9,7 @@ RUN mvn clean package -DskipTests
 # Stage 2: Create the runtime image
 FROM eclipse-temurin:21-alpine-3.21
 
-MAINTAINER tsadimas
+MAINTAINER IoulianosPolyzos
 WORKDIR /app
 
 RUN apk update && apk add curl
@@ -17,7 +17,7 @@ RUN apk update && apk add curl
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
 # Copy the built jar from the builder stage
-COPY --from=builder /build/target/rentEstate-2024-0.0.1-SNAPSHOT.jar ./application.jar
+COPY --from=builder /build/target/rentEstate-0.0.1-SNAPSHOT.jar ./application.jar
 
 # Set ownership to the appuser
 RUN chown appuser /app/application.jar
