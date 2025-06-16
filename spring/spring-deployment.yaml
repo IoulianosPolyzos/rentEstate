@@ -47,7 +47,7 @@ spec:
         - name: SPRING_DATASOURCE_PASSWORD
           value: pass12345
         ports:
-        - containerPort:  8080
+        - containerPort:  8081
           name:  spring
       imagePullSecrets:
       - name: registry-credentials

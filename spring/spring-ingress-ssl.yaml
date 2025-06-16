@@ -10,7 +10,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: spring.huarent.ip-ddns.com
+    - host: spring.rentestate.ip-ddns.com
       http:
         paths:
           - path: /
@@ -22,6 +22,6 @@ spec:
                   name: spring  
   tls:
     - hosts:
-        - spring.huarent.ip-ddns.com
+        - spring.rentestate.ip-ddns.com
       secretName: spring-production-certificate
 
