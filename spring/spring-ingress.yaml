@@ -6,7 +6,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: "spring.rentEstate.ip-ddns.com"
+  - host: "spring.rentestate.ip-ddns.com"
 
   - http:
       paths:
