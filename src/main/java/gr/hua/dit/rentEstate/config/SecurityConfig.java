@@ -22,11 +22,15 @@ public class SecurityConfig {
     private UserDetailsService userDetailsService;
 
     private BCryptPasswordEncoder passwordEncoder;
+    private final CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 
-    public SecurityConfig(UserService userService, UserDetailsService userDetailsService, BCryptPasswordEncoder passwordEncoder) {
+
+    public SecurityConfig(UserService userService, UserDetailsService userDetailsService, BCryptPasswordEncoder passwordEncoder,CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler) {
         this.userService = userService;
         this.userDetailsService = userDetailsService;
         this.passwordEncoder = passwordEncoder;
+        this.customAuthenticationSuccessHandler = customAuthenticationSuccessHandler;
+
     }
 
     @Bean
@@ -51,6 +55,10 @@ public class SecurityConfig {
                         .permitAll());
         return http.build();
     }
+
+
+
+
 
 
 

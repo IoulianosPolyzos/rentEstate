@@ -5,6 +5,7 @@ import gr.hua.dit.rentEstate.entities.User;
 import gr.hua.dit.rentEstate.repositories.RoleRepository;
 import gr.hua.dit.rentEstate.repositories.UserRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,6 +24,8 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository; // Repository for User data
     private final RoleRepository roleRepository; // Repository for Role data
     private final BCryptPasswordEncoder passwordEncoder; // Encoder for securely hashing passwords
+    @Autowired
+    private EmailService emailService;
 
     //Constructor for dependency
     public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
@@ -35,7 +38,7 @@ public class UserService implements UserDetailsService {
     @Transactional
     public Integer saveUser(User user) {
         Optional<User> existingUser = userRepository.findById(user.getId()); // Check if the user exists
-
+        boolean isNewUser = !existingUser.isPresent();
         if (existingUser.isPresent()) {
             if (!passwordEncoder.matches(user.getPassword(), existingUser.get().getPassword())) {
                 user.setPassword(existingUser.get().getPassword());
@@ -53,7 +56,11 @@ public class UserService implements UserDetailsService {
             user.setRoles(roles);
         }
 
+
         user = userRepository.save(user); // Save user to the repository
+        if (isNewUser && user.getEmail() != null) {
+            emailService.sendRegisterNotification(user.getEmail(), user.getUsername());
+        }
         return user.getId();
     }
 
@@ -70,7 +77,7 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> opt = userRepository.findByUsername(username); // Search for the user by username
 
-        if (opt.isEmpty()) {
+        if (!opt.isPresent()) {
             throw new UsernameNotFoundException("User with email: " + username + " not found!");
         } else {
             User user = opt.get(); // Get the user

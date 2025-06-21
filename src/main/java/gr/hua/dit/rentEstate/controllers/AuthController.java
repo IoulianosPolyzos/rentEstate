@@ -44,7 +44,7 @@ public class AuthController {
             User adminUser = new User();
             adminUser.setUsername("admin");
             adminUser.setPassword(passwordEncoder.encode("admin123"));
-            adminUser.setEmail("rent_estate_admin@gmail.com");
+            adminUser.setEmail("rentestate.app@gmail.com");
             adminUser.setVerified(true);
 
             //Assign Role_Admin to admin
