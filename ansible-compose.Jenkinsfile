@@ -2,6 +2,9 @@ pipeline {
 
     agent any
 
+    options {
+       cleanWs()
+    }
     parameters {
         booleanParam(name: 'INSTALL_POSTGRES', defaultValue: true, description: 'Install PostgreSQL')
     }
@@ -9,6 +12,7 @@ pipeline {
     environment {
             PATH = "/usr/bin:/usr/local/bin:${env.PATH}"
         }
+
 
     stages {
 
