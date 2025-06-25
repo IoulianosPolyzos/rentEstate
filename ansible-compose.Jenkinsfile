@@ -1,10 +1,6 @@
 pipeline {
 
     agent any
-
-    options {
-       cleanWs()
-    }
     parameters {
         booleanParam(name: 'INSTALL_POSTGRES', defaultValue: true, description: 'Install PostgreSQL')
     }
@@ -16,8 +12,10 @@ pipeline {
 
     stages {
 
-
-
+        stage('Cleanup Workspace') {
+                    steps {
+                        cleanWs()
+                    }
         stage('Checkout Ansible repo') {
                     steps {
                         checkout([$class: 'GitSCM', branches: [[name: 'main']],
