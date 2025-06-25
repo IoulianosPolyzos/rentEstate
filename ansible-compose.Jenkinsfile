@@ -24,7 +24,7 @@ pipeline {
                     }
                 }
 
-        stage('test connection to deploy env') {
+        stage('test connection to deploy envv') {
         steps {
             sh '''
                 ansible -i ~/workspace/ansible/hosts.yaml -m ping appservers,dbservers
