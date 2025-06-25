@@ -16,6 +16,7 @@ pipeline {
                     steps {
                         cleanWs()
                     }
+                }
         stage('Checkout Ansible repo') {
                     steps {
                         checkout([$class: 'GitSCM', branches: [[name: 'main']],
