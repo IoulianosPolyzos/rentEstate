@@ -11,6 +11,14 @@ pipeline {
 
 
     stages {
+         stage('Debug workspace') {
+             steps {
+                 sh 'echo "Current directory: $(pwd)"'
+                 sh 'ls -l ~/workspace/ansible || echo "No ansible folder in ~/workspace/"'
+                 sh 'ls -l'
+             }
+         }
+
 
 //         stage('Cleanup Workspace') {
 //                     steps {
