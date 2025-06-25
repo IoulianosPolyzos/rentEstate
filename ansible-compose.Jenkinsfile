@@ -27,14 +27,14 @@ pipeline {
             }
         }
         
-        stage('Install postgres') {
-            steps {
-                sh '''
-                    export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
-                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l appservers ~/workspace/ansible/playbook/spring-docker.yaml
-                '''
-            }
-        }
+//         stage('Install postgres') {
+//             steps {
+//                 sh '''
+//                     export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
+//                     ansible-playbook -i ~/workspace/ansible/hosts.yaml -l appservers ~/workspace/ansible/playbook/spring-docker.yaml
+//                 '''
+//             }
+//         }
 
 }
 }
