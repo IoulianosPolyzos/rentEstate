@@ -30,7 +30,7 @@ services:
       db:
         condition: service_healthy
     env_file:
-      - /home/azureuser/spring/.envfile
+      - .envfile
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/mydb
       - SPRING_DATASOURCE_USERNAME=myuser
