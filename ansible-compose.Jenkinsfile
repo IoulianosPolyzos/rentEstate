@@ -11,20 +11,7 @@ pipeline {
 
 
     stages {
-         stage('Debug workspace') {
-             steps {
-                 sh 'echo "Current directory: $(pwd)"'
-                 sh 'ls -l ~/workspace/ansible || echo "No ansible folder in ~/workspace/"'
-                 sh 'ls -l'
-             }
-         }
 
-
-//         stage('Cleanup Workspace') {
-//                     steps {
-//                         cleanWs()
-//                     }
-//                 }
         stage('Checkout Ansible repo') {
                     steps {
                         checkout([$class: 'GitSCM', branches: [[name: 'main']],
@@ -35,7 +22,7 @@ pipeline {
         stage('test connection to deploy env') {
         steps {
             sh '''
-                ansible -i ~/workspace/ansible/hosts.yaml -m ping appservers,dbservers
+                ansible -i ~/workspace/ansible-compose/hosts.yaml -m ping appservers,dbservers
             '''
             }
         }
@@ -46,8 +33,8 @@ pipeline {
             }
             steps {
                 sh '''
-                    export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
-                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l appservers ~/workspace/ansible/playbook/spring-docker.yaml
+                    export ANSIBLE_CONFIG=~/workspace/ansible-compose/ansible.cfg
+                    ansible-playbook -i ~/workspace/ansible-compose/hosts.yaml -l appservers ~/workspace/ansible-compose/playbook/spring-docker.yaml
                 '''
             }
         }

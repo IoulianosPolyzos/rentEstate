@@ -13,20 +13,6 @@ pipeline {
 
     stages {
 
-//         stage('run ansible pipeline') {
-//             steps {
-//                 build job: 'ansible-job'
-//             }
-//         }
-        stage('Debug workspace') {
-            steps {
-                sh 'echo "Current directory: $(pwd)"'
-                sh 'ls -l ~/workspace/ansible || echo "No ansible folder in ~/workspace/"'
-                sh 'ls -l'
-            }
-        }
-
-
         stage('Checkout Ansible repo') {
                     steps {
                         checkout([$class: 'GitSCM', branches: [[name: 'main']],
