@@ -12,11 +12,11 @@ pipeline {
 
     stages {
 
-        stage('Cleanup Workspace') {
-                    steps {
-                        cleanWs()
-                    }
-                }
+//         stage('Cleanup Workspace') {
+//                     steps {
+//                         cleanWs()
+//                     }
+//                 }
         stage('Checkout Ansible repo') {
                     steps {
                         checkout([$class: 'GitSCM', branches: [[name: 'main']],
@@ -24,7 +24,7 @@ pipeline {
                     }
                 }
 
-        stage('test connection to deploy envv') {
+        stage('test connection to deploy env') {
         steps {
             sh '''
                 ansible -i ~/workspace/ansible/hosts.yaml -m ping appservers,dbservers
