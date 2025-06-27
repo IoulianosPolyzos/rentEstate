@@ -47,6 +47,11 @@ spec:
           value: myuser
         - name: SPRING_DATASOURCE_PASSWORD
           value: pass12345
+        - name: MAIL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+               name: mail-secret
+               key: MAIL_PASSWORD
         ports:
         - containerPort:  8081
           name:  spring
