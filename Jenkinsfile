@@ -45,22 +45,18 @@ stages {
 
 
 
-//     stage('deploy to kubernetes') {
-//             steps {
-//                 sh '''
-//                     HEAD_COMMIT=$(git rev-parse --short HEAD)
-//                     TAG=$HEAD_COMMIT-$BUILD_ID
-//                     export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
-//                     ansible-playbook -i ~/workspace/ansible/hosts.yaml -e new_image=$DOCKER_PREFIX:$TAG ~/workspace/ansible/playbooks/k8s-update-spring-deployment.yaml
-//                 '''
-//             }
-//         }
+    stage('deploy to kubernetes') {
+            steps {
+                sh '''
+                    HEAD_COMMIT=$(git rev-parse --short HEAD)
+                    TAG=$HEAD_COMMIT-$BUILD_ID
+                    export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
+                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -e new_image=$DOCKER_PREFIX:$TAG ~/workspace/ansible/playbooks/k8s-update-spring-deployment.yaml
+                '''
+            }
+        }
 
-//    post {
-//        always {
-//            mail  to: "tsadimas@gmail.com", from: "tsadimas@gmail.com", body: "Project ${env.JOB_NAME} <br>, Build status ${currentBuild.currentResult} <br> Build Number: ${env.BUILD_NUMBER} <br> Build URL: ${env.BUILD_URL}", subject: "JENKINS: Project name -> ${env.JOB_NAME}, Build -> ${currentBuild.currentResult}"
-//        }
-//    }
+
 
 }
 

@@ -2,7 +2,7 @@ pipeline {
 
     agent any
     parameters {
-        booleanParam(name: 'INSTALL_POSTGRES', defaultValue: true, description: 'Install PostgreSQL')
+        booleanParam(name: 'INSTALL', defaultValue: true, description: 'Install')
     }
 
     environment {
@@ -27,9 +27,9 @@ pipeline {
             }
         }
 
-        stage('Install postgres') {
+        stage('Install') {
              when {
-                expression { return params.INSTALL_POSTGRES }
+                expression { return params.INSTALL }
             }
             steps {
                 sh '''
