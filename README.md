@@ -54,9 +54,9 @@
 
 # Για να τρέξουμε την εργασία ακολουθούμε τα εξής βήματα
 
-## 1.Εκτελούμε την εντολή : git clone https://gitlab.hua.gr/it2022052/rentestatefinal.git
+## 1.Εκτελούμε την εντολή : git clone https://github.com/IoulianosPolyzos/rentEstate.git
 ##   ή κατεβάζουμε το project από το Git Repository Link :
-##   Git Repository Link :https://gitlab.hua.gr/it2022052/rentestatefinal
+##   Git Repository Link :https://github.com/IoulianosPolyzos/rentEstate.git
 
 ## 2.Ανοίγουμε ένα IDE και κάνουμε κλικ "Open" για να ανοίξουμε το project
 
