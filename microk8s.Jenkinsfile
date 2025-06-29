@@ -36,10 +36,10 @@ stages {
                     docker build --rm -t $DOCKER_PREFIX:$TAG -t $DOCKER_PREFIX:latest -f Dockerfile .
                 '''
 
-                sh '''
-                    echo $DOCKER_TOKEN | docker login $DOCKER_SERVER -u $DOCKER_USER --password-stdin
-                    docker push $DOCKER_PREFIX --all-tags
-                '''
+//                 sh '''
+//                     echo $DOCKER_TOKEN | docker login $DOCKER_SERVER -u $DOCKER_USER --password-stdin
+//                     docker push $DOCKER_PREFIX --all-tags
+//                 '''
             }
         }
 
@@ -50,8 +50,8 @@ stages {
                 sh '''
                     HEAD_COMMIT=$(git rev-parse --short HEAD)
                     TAG=$HEAD_COMMIT-$BUILD_ID
-                    export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
-                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -e new_image=$DOCKER_PREFIX:$TAG ~/workspace/ansible/playbook/k8s-update-spring-deployment.yaml
+                    export ANSIBLE_CONFIG=~/workspace/k8s-job/ansible.cfg
+                    ansible-playbook -i ~/workspace/k8s-job/hosts.yaml -e new_image=$DOCKER_PREFIX:$TAG ~/workspace/ansible/playbook/k8s-update-spring-deployment.yaml
                 '''
             }
         }
