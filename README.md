@@ -40,6 +40,7 @@
 - **EstateService**
 - **TenantService**
 - **RentService**
+- **EmailService**
 
 ## Templates and Template Directories 
 - **admin**
