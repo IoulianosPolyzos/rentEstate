@@ -5,7 +5,7 @@ agent any
 environment {
         DOCKER_USER='ioulianospolyzos'
         DOCKER_SERVER='ghcr.io'
-        DOCKER_PREFIX='ghcr.io/ioulianospolyzos/devops-spring:latest'
+        DOCKER_PREFIX='ghcr.io/ioulianospolyzos/devops-spring'
     }
 
 
