@@ -18,14 +18,14 @@ stages {
         }
     }
 
-//     stage('Test') {
-//         steps {
-//             sh '''
-//                 echo "Start testing"
-//                 ./mvnw test
-//             '''
-//         }
-//     }
+    stage('Test') {
+        steps {
+            sh '''
+                echo "Start testing"
+                ./mvnw test
+            '''
+        }
+    }
 
     stage('Docker build and push') {
             steps {
