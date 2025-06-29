@@ -20,8 +20,9 @@ stages {
 
     stage('git clone') {
             steps {
-                dir('app')
+                dir('app'){
                  git url: 'https://github.com/IoulianosPolyzos/rentEstate.git', branch: 'main'
+                 }
             }
         }
 
