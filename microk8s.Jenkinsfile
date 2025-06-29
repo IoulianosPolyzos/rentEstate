@@ -13,9 +13,9 @@ environment {
 stages {
 
 
-    stage('run ansible pipeline') {
+    stage('git clone ') {
         steps {
-            build job: 'ansible'
+             git url: 'https://github.com/IoulianosPolyzos/ansible.git', branch: 'main'
         }
     }
 
@@ -51,7 +51,7 @@ stages {
                     HEAD_COMMIT=$(git rev-parse --short HEAD)
                     TAG=$HEAD_COMMIT-$BUILD_ID
                     export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
-                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -e new_image=$DOCKER_PREFIX:$TAG ~/workspace/ansible/playbooks/k8s-update-spring-deployment.yaml
+                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -e new_image=$DOCKER_PREFIX:$TAG ~/workspace/ansible/playbook/k8s-update-spring-deployment.yaml
                 '''
             }
         }
