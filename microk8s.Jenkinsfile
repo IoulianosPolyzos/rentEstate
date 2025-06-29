@@ -18,13 +18,20 @@ stages {
         }
     }
 
+    stage('git clone') {
+            steps {
+                dir('app')
+                 git url: 'https://github.com/IoulianosPolyzos/rentEstate.git', branch: 'main'
+            }
+        }
+
 
     stage('Docker build and push') {
             steps {
                 sh '''
                     HEAD_COMMIT=$(git rev-parse --short HEAD)
                     TAG=$HEAD_COMMIT-$BUILD_ID
-                    docker build --rm -t $DOCKER_PREFIX:$TAG -t $DOCKER_PREFIX:latest -f Dockerfile .
+                    docker build --rm -t $DOCKER_PREFIX:$TAG -t $DOCKER_PREFIX:latest -f app/Dockerfile app/
                 '''
 
 //                 sh '''
