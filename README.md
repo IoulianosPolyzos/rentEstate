@@ -1,10 +1,7 @@
-# Εργασία: Υλοποίηση Συστήματος διαχείρισης ακινήτων σε Java χρησιμοποιώντας Τεχνολογία Spring 
-## Για την υλοποίηση χρησιμοποιήσαμε JAVA 21
-## Ομάδα 5 : 
-## Ιουλιανός Πολύζος 2022091
-## Κωνσταντίνος Κωτσαράς 2022050
+# Project: Implementation of a Property Management System in Java using Spring Technology
+## For this implementation, we used Java 21
 
-Αυτή η εργασία αποτελεί μια υλοποίηση ενός συστήματος διαχείρισης ακινήτων.
+This project is an implementation of a property management system.
 
 ## Entities
 - **User**
@@ -52,24 +49,22 @@
 - **page_layout**
 - **index**
 
-# Για να τρέξουμε την εργασία ακολουθούμε τα εξής βήματα
+# Steps to run the project:
 
-## 1.Εκτελούμε την εντολή : git clone https://github.com/IoulianosPolyzos/rentEstate.git
-##   ή κατεβάζουμε το project από το Git Repository Link :
+## 1.Execute the command: : git clone https://github.com/IoulianosPolyzos/rentEstate.git
+##   ή or download the project from the Git repository :
 ##   Git Repository Link :https://github.com/IoulianosPolyzos/rentEstate.git
 
-## 2.Ανοίγουμε ένα IDE και κάνουμε κλικ "Open" για να ανοίξουμε το project
+## 2.Open an IDE and click "Open" to load the project
+## 3.Select the project
 
-## 3.Eπιλέγουμε το project
+## 4.Once the project is loaded in the IDE, click the "Run" button
 
-## 4.Όταν φορτωθεί  το project στο IDE , κάνουμε κλικ στο κουμπί "Run" μέσα από το IDE
+## 5.Wait a few moments for the application to start
 
-## 5.Περιμένουμε λίγο ώστε να "αρχίσει" η εφαρμογή 
+## 6.Open a browser
 
-## 6.Ανοίγουμε ένα browser 
-
-## 7.Πληκτρολογούμε τη διεύθυνση : http://localhost:8080/
-
-## 8.Η εφαρμογή είναι έτοιμη για χρήση
+## 7.Enter the following address:
+## 8.The application is ready to use
 
 
